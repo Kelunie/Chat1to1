@@ -1,8 +1,6 @@
 import socket
 import threading
-from http.client import responses
-
-from websockets.asyncio.server import serve
+# headdecks
 
 
 def handle_cliente(cliente_socket, cliente_address):
@@ -10,13 +8,13 @@ def handle_cliente(cliente_socket, cliente_address):
         try:
             # Recibe datos del cliente
             data = cliente_socket.recv(1024).decode('utf-8')
-            print(f"Cliente {cliente_address}: {data}")
+            print(f"Cliente {cliente_address}:\n {data}")
 
             if data == "exit":
                 break
 
             # Enviar una respuesta al cliente
-            responses = input("respuesta: ")
+            responses = input("respuesta:\n ")
             cliente_socket.send(responses.encode('utf-8'))
         except Exception as e:
             raise e
